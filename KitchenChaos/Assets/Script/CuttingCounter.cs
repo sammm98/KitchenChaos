@@ -1,13 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearCounter : BaseCounter
+public class CuttingCounter : BaseCounter
 {
-    [SerializeField] private KitchenObjectSO kitchenObjectSO;
-
-
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -21,6 +17,7 @@ public class ClearCounter : BaseCounter
             else
             {
                 // Player not carrying anything
+                
             }
         }
         else
