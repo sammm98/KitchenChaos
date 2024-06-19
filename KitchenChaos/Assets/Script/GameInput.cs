@@ -8,17 +8,23 @@ public class GameInput : MonoBehaviour
 {
     // Start is called before the first frame update
     public event EventHandler OnInteractAction;
+    public event EventHandler OnInteractAltermateAction;
     private PlayerInputAction playerInputAction;
     private void Awake()
     {
         playerInputAction = new PlayerInputAction();
         playerInputAction.Player.Enable();
         playerInputAction.Player.Interact.performed += Interact_performed;
-
+        playerInputAction.Player.InteractAltermate.performed += InteractAltermate_performed;
+        
     }
 
-    
-    
+    private void InteractAltermate_performed(InputAction.CallbackContext obj)
+    {
+        OnInteractAltermateAction?.Invoke(this, EventArgs.Empty);
+    }
+
+
     private void Interact_performed(InputAction.CallbackContext obj)
     {
         OnInteractAction?.Invoke(this, EventArgs.Empty);
